@@ -43,7 +43,7 @@ const Header = () => {
               key={link.href}
               href={link.href}
               className={
-                pathName === link.href ? 'font-semibold text-red-500' : ''
+                pathName === link.href ? 'bg-red-700 px-2 rounded-md text-white' : ''
               }
             >
               {link.name}
