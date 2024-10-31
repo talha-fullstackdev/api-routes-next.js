@@ -5,7 +5,9 @@ const page = () => {
   const router = useRouter()
   const handleClick =()=>{
         alert("Your order has been succesfully placed!")
-        router.push("/about")
+        // router.push("/about") // back to the provided route
+        // router.back() // back to previous route location
+        router.replace("/")
   }
   return (
     <div>
