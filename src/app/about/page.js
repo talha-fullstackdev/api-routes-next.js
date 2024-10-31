@@ -2,8 +2,11 @@ import React from 'react'
 
 const page = () => {
   return (
-    <h1>home page</h1>
+    <div> about page</div>
   )
 }
+export const metadata ={
+  title:"about page"
 
+}
 export default page
