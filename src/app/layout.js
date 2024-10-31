@@ -14,7 +14,12 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Learning Routing",
+  title:{
+    absolute:"",
+    default:"default title routes",
+    template:"%s | next routes"
+
+  },
   description: "Made by talha nawaz",
 };
 
