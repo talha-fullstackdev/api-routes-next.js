@@ -14,11 +14,10 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title:{
-    absolute:"",
-    default:"default title routes",
-    template:"%s | next routes"
-
+  title: {
+    absolute: "",
+    default: "default title routes",
+    template: "%s | next routes",
   },
   description: "Made by talha nawaz",
 };
@@ -29,9 +28,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header/>
+        <Header />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
