@@ -33,6 +33,7 @@ const Header = () => {
     { name: 'Profile', href: '/profile' },
     { name: 'Docs', href: '/docs' },
     { name: 'User One', href: '/user-one' },
+    { name: 'products', href: '/products' }
   ];
   return (
     <header className="bg-slate-600 p-4">
