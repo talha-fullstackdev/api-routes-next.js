@@ -1,5 +1,5 @@
 const GET = async () => {
-    return new Response("hello first route handlers functions");
+    return new Response("hello world");
 }
 
 export { GET };
