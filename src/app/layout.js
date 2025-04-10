@@ -19,7 +19,7 @@ export const metadata = {
     default: "default title routes",
     template: "%s | next routes",
   },
-  description: "Made by talha nawaz",
+  description: "api routes made by talha nawaz",
 };
 
 export default function RootLayout({ children }) {
