@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 import { connectionString } from "@/lib/database/db_connection"
 import { Employee } from "@/lib/database/model/employee"
-import { NextResponse } from "next/server" // 🔑 make sure this is imported!
+import { NextResponse } from "next/server"
 
 export const DELETE = async (req,{ params }) => { // here we have to pass req parameter if it is in used or not
   try {
