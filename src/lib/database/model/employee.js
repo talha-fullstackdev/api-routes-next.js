@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const employeeModel = new mongoose.Schema({
     name: String,
     email: String,
