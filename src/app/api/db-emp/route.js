@@ -26,18 +26,3 @@ export const POST = async (req, res) => {
     { status: 200 }
   );
 };
-export const DELETE = async({params})=>{
-  try{
-    await mongoose.connect(connectionString)
-    const {empID} =params
-    const deletemp = await Employee.findByIdAndDelete(empID)
-    if(!deletemp){
-      return NextResponse.json({msg:"employee not found with this id"},{status:404})
-    }
-    NextResponse.json({msg:"employee deleted Succesfully"},{status:200}) 
-
-  }catch(err){
-    console.error("server side error",err)
-    NextResponse.json({msg:"server side errror"},{status:500})
-  }
-}
