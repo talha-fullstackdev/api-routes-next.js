@@ -28,6 +28,7 @@ const page = () => {
         body: JSON.stringify(empData),
       });
       data = await data.json();
+    //   console.log(data)
       if (data.success) {
         alert("emloyee added succesfully");
       } else {
