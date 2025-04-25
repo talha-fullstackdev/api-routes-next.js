@@ -1,4 +1,5 @@
 "use client"
+import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 const Page = () => {
   const [data, setData] = useState([])
@@ -15,6 +16,7 @@ const Page = () => {
     getData()
   }, [])
   return (
+    <>
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Employees</h1>
       
@@ -42,11 +44,16 @@ const Page = () => {
               ))}
             </tbody>
           </table>
+       
         </div>
       ) : (
         <p>Loading...</p>
       )}
+        
     </div>
+    <Link href="/apifrontend" className="bg-green-400 w-[160px] p-1 px-2 mt-4 ml-[300px] rounded-md hover:bg-green-300">Add Employee</Link>
+    <Link href="/" className="bg-green-400 w-[160px] p-1 px-2 mt-4 ml-[300px] rounded-md hover:bg-green-300">go to home</Link>
+    </>
   )
 }
 
