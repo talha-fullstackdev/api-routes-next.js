@@ -35,7 +35,7 @@ const page = () => {
         alert("employee not saved! try again");
       }
     } catch (err) {
-      console.log("error occured", err);
+      console.log("server side error occured", err);
     }
     cleanInputFileds();
   };
