@@ -18,17 +18,27 @@ const page = () => {
     const empData = {
       name: nameRef.current.value,
       email: emailRef.current.value,
-      gender: genderRef.current.valuef,
+      gender: genderRef.current.value,
       department: departmentRef.current.value,
       position: positionRef.current.value,
     };
+    const { name, email, gender, department, position } = empData;
+    if (!name || !email || !gender || !department || !position) {
+      return alert("please fill all fields!");
+    }
+    if(name.length < 5  ){
+      return alert("name should not less then 5 charcters")
+    }
+    if(!email.includes("@")){
+      return alert("provide valid email")
+    }
     try {
       let data = await fetch("http://localhost:3000/api/db-emp", {
         method: "POST",
         body: JSON.stringify(empData),
       });
       data = await data.json();
-    //   console.log(data)
+      //   console.log(data)
       if (data.success) {
         alert("emloyee added succesfully");
       } else {
