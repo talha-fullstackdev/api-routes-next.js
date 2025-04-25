@@ -63,6 +63,9 @@ export const GET = async (req, { params }) => {
     await mongoose.connect(connectionString);
     const { empID } = params;
     let result = await Employee.findById(empID)
+    if(!result){
+      return NextResponse.json({msg:"employee not found with this is"},{status:404})
+    }
     return NextResponse.json({msg:result})
   } catch (err) {
     console.error("server side errro", err);

@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
 const page = ({ params }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
