@@ -1,6 +1,8 @@
 "use client"
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
+import { LiaEdit } from "react-icons/lia";
+
 const Page = () => {
   const [data, setData] = useState([])
   useEffect(() => {
@@ -30,6 +32,7 @@ const Page = () => {
                 <th className="py-2 px-4 border-b">Gender</th>
                 <th className="py-2 px-4 border-b">Department</th>
                 <th className="py-2 px-4 border-b">Position</th>
+                <th className="py-2 px-4 border-b">Edit</th>
               </tr>
             </thead>
             <tbody>
@@ -40,6 +43,7 @@ const Page = () => {
                   <td className="py-2 px-4 border-b">{emp.gender }</td>
                   <td className="py-2 px-4 border-b">{emp.department}</td>
                   <td className="py-2 px-4 border-b">{emp.position}</td>
+                  <td title="edit?" className="py-2 px-4 border-b hover:text-xl"><Link href={`/getemp/${emp._id}`}><LiaEdit /></Link></td>
                 </tr>
               ))}
             </tbody>

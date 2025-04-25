@@ -36,7 +36,7 @@ export const PUT = async (req, { params }) => {
     // const id = { _id: empID }; // we can also use id like this
     let updatedEmp = await Employee.findByIdAndUpdate(
       // id
-       empID,
+      empID,
       { name, email, gender, department, position },
       { new: true }
     );
@@ -53,5 +53,19 @@ export const PUT = async (req, { params }) => {
   } catch (err) {
     console.error("Server side error occured while updating employee data");
     return NextResponse.json({ msg: "Server side error" }, { status: 500 });
+  }
+};
+
+///////////////////////////////////////////////////////////////////
+////////// GET api for prefilled form data for updatiing employee data
+export const GET = async (req, { params }) => {
+  try {
+    await mongoose.connect(connectionString);
+    const { empID } = params;
+    let result = await Employee.findById(empID)
+    return NextResponse.json({msg:result})
+  } catch (err) {
+    console.error("server side errro", err);
+    return NextResponse.json({ msg: "server side error" }, { status: 500 });
   }
 };
