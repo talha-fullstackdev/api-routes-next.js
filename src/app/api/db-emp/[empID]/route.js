@@ -26,3 +26,16 @@ export const DELETE = async (req,{ params }) => { // here we have to pass req pa
     );
   }
 };
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////// put api for updating data
+export const PUT = async(req,{params})=>{
+  try{
+    await mongoose.connect(connectionString)
+    const {empID}=params
+
+  }catch(err){
+    console.err("Server side error occured while updating employee data")
+   return NextResponse.json({msg:"Server side error"},{status:500})
+  }
+}
