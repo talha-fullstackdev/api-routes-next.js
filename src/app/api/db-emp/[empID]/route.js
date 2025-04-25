@@ -51,7 +51,7 @@ export const PUT = async (req, { params }) => {
       { status: 200 }
     );
   } catch (err) {
-    console.err("Server side error occured while updating employee data");
+    console.error("Server side error occured while updating employee data");
     return NextResponse.json({ msg: "Server side error" }, { status: 500 });
   }
 };
