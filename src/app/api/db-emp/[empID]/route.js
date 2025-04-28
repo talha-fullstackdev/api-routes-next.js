@@ -30,9 +30,10 @@ export const DELETE = async (req, { params }) => {
 export const PUT = async (req, { params }) => {
   try {
     await mongoose.connect(connectionString);
+    const { empID } = await params;
     const body = await req.json();
     const { name, email, gender, department, position } = body;
-    const { empID } = await params;
+
     // const id = { _id: empID }; // we can also use id like this
     let updatedEmp = await Employee.findByIdAndUpdate(
       // id

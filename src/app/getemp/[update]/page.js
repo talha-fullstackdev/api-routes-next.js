@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { use } from "react"; // ✅ add this import
  // for redirecting after update
-
 const Page = ({ params }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
