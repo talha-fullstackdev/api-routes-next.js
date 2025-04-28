@@ -48,7 +48,7 @@ export const PUT = async (req, { params }) => {
       );
     }
     return NextResponse.json(
-      { msg: "updated succesfully", result: updatedEmp,success:true },
+      { msg: "updated succesfully", updatedEmp, success:true },
       { status: 200 }
     );
   } catch (err) {
