@@ -13,7 +13,6 @@ const Page = ({ params }) => {
   const [position, setPosition] = useState("");
   const router = useRouter(); // for redirecting
 
-  // const { update: id } = params; // ✅ correct way
   const { update: id } = use(params); // ✅ unwrap the promise
 
   useEffect(() => {
@@ -43,12 +42,12 @@ const Page = ({ params }) => {
         department,
         position,
       };
+      if(!name ||!email|| !gender || !department ||!position){
+        return alert("dont leave any filed empty")
+      }
 
       let res = await fetch(`http://localhost:3000/api/db-emp/${id}`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json", // ✅ set correct headers
-        },
         body: JSON.stringify(updatedEmpData),
       });
 
