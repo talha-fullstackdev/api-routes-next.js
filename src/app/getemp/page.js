@@ -47,7 +47,7 @@ const Page = () => {
                   <td className="py-2 px-4 border-b">{emp.department}</td>
                   <td className="py-2 px-4 border-b">{emp.position}</td>
                   <td title="edit?" className="py-2 px-4 border-b hover:text-xl hover:text-green-600"><Link href={`/getemp/${emp._id}`}><LiaEdit /></Link></td>
-                  <td title="delete?" className="py-2 px-4 border-b hover:text-xl hover:text-red-600"><Link href=""><Delete id={emp._id}/></Link>     
+                  <td title="delete?" className="py-2 px-4 border-b hover:text-xl hover:text-red-600"><Link href=""><Delete id={emp._id} name={emp.name}/></Link>     
                   <ToastContainer
                     position="top-center" // ✅ Centered on top
                     autoClose={2270}

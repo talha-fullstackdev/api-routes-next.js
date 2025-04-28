@@ -42,7 +42,7 @@ const page = () => {
       data = await data.json();
       //   console.log(data)
       if (data.success) {
-        toast.success("emloyee added succesfully");
+        toast.success(`emloyee ${name} added succesfully`);
       } else {
         toast.error("employee not saved! try again");
       }
