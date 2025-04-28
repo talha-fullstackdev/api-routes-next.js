@@ -8,9 +8,9 @@ const Page = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const result = await fetch("http://localhost:3000/api/db-emp")
-        const jsonData = await result.json()
-        setData(jsonData.success)
+        let  result = await fetch("http://localhost:3000/api/db-emp")
+        result = await result.json()
+        setData(result.success)
       } catch (error) {
         console.error("Error fetching data:", error)
       }
@@ -20,7 +20,7 @@ const Page = () => {
   return (
     <>
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Employees</h1>
+      <h1 className="text-2xl font-bold mb-4">Employees Record</h1>
       
       {data.length > 0 ? (
         <div className="overflow-x-auto">

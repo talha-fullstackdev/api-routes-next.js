@@ -1,77 +1,123 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-const page = ({ params }) => {
+import { useRouter } from "next/navigation";
+import { use } from "react"; // ✅ add this import
+ // for redirecting after update
+
+const Page = ({ params }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [department, setDepartment] = useState("");
   const [position, setPosition] = useState("");
-  // let id = params.update
-  const { update: id } = React.use(params); // use this in place of above to remove some misterious error
+  const router = useRouter(); // for redirecting
+
+  // const { update: id } = params; // ✅ correct way
+  const { update: id } = use(params); // ✅ unwrap the promise
 
   useEffect(() => {
     const getEmpData = async () => {
-      let data = await fetch(`http://localhost:3000/api/db-emp/${id}`);
-      data = await data.json();
-      const { name, email, gender, department, position } = data.msg;
-      setName(name);
-      setEmail(email);
-      setGender(gender);
-      setDepartment(department);
-      setPosition(position);
+      try {
+        let res = await fetch(`http://localhost:3000/api/db-emp/${id}`);
+        res = await res.json();
+        const { name, email, gender, department, position } = res.msg;
+        setName(name);
+        setEmail(email);
+        setGender(gender);
+        setDepartment(department);
+        setPosition(position);
+      } catch (error) {
+        console.error("Failed to fetch employee data:", error);
+      }
     };
     getEmpData();
   }, [id]);
+
+  const handleUpdateEmployee = async () => {
+    try {
+      const updatedEmpData = {
+        name,
+        email,
+        gender,
+        department,
+        position,
+      };
+
+      let res = await fetch(`http://localhost:3000/api/db-emp/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json", // ✅ set correct headers
+        },
+        body: JSON.stringify(updatedEmpData),
+      });
+
+      res = await res.json();
+
+      if (res.success) {
+        alert("Employee updated successfully!");
+        router.push("/getemp"); // ✅ redirect after success
+      } else {
+        alert("Employee not updated. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error updating employee:", error);
+      alert("Something went wrong!");
+    }
+  };
+
   return (
     <div className="flex flex-col w-[400px] gap-6 m-auto mt-20">
-      <h1 className="text-2xl font-semibold text-center">Update employee</h1>
+      <h1 className="text-2xl font-semibold text-center">Update Employee</h1>
       <input
         value={name}
         type="text"
-        placeholder="enter your name"
-        className="border-2 p-2 "
+        placeholder="Enter your name"
+        className="border-2 p-2"
         onChange={(e) => setName(e.target.value)}
       />
       <input
         value={email}
         type="email"
-        placeholder="enter your email"
-        className="border-2  p-2"
+        placeholder="Enter your email"
+        className="border-2 p-2"
         onChange={(e) => setEmail(e.target.value)}
       />
       <input
         value={gender}
         type="text"
-        placeholder="enter your gender"
+        placeholder="Enter your gender"
         className="border-2 p-2"
         onChange={(e) => setGender(e.target.value)}
       />
       <input
         value={department}
         type="text"
-        placeholder="enter your department"
+        placeholder="Enter your department"
         className="border-2 p-2"
         onChange={(e) => setDepartment(e.target.value)}
       />
       <input
         value={position}
         type="text"
-        placeholder="enter your position"
+        placeholder="Enter your position"
         className="border-2 p-2"
         onChange={(e) => setPosition(e.target.value)}
       />
-      <button className="bg-green-400 w-[80px] m-auto p-1 rounded-md hover:bg-green-300">
-        add
+      <button
+        onClick={handleUpdateEmployee}
+        className="bg-green-400 w-[80px] m-auto p-1 rounded-md hover:bg-green-300"
+      >
+        Update
       </button>
       <Link
-        className="bg-green-400 w-[160px] text-center m-auto p-1 rounded-md hover:bg-green-300 "
         href="/getemp"
+        className="bg-green-400 w-[160px] text-center m-auto p-1 rounded-md hover:bg-green-300"
       >
-        see employee data
+        See Employee Data
       </Link>
     </div>
   );
 };
 
-export default page;
+export default Page;
