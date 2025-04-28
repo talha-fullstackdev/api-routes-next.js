@@ -10,7 +10,7 @@ const Page = ({ params }) => {
   const [gender, setGender] = useState("");
   const [department, setDepartment] = useState("");
   const [position, setPosition] = useState("");
-  const router = useRouter(); // for redirecting
+  const router = useRouter(); 
 
   const { update: id } = use(params); // ✅ unwrap the promise
 
