@@ -3,8 +3,7 @@ import { connectionString } from "@/lib/database/db_connection";
 import { Employee } from "@/lib/database/model/employee";
 import { NextResponse } from "next/server";
 
-export const DELETE = async (req, { params }) => {
-  // here we have to pass req parameter if it is in used or not
+export const DELETE = async (req, { params }) => {// here we have to pass req parameter if it is in used or not
   try {
     await mongoose.connect(connectionString);
     const { empID } = params;
@@ -16,7 +15,7 @@ export const DELETE = async (req, { params }) => {
       );
     }
     return NextResponse.json(
-      { msg: "Employee deleted successfully" },
+      { msg: "Employee deleted successfully" ,success:true },
       { status: 200 }
     );
   } catch (err) {
@@ -73,3 +72,5 @@ export const GET = async (req, { params }) => {
     return NextResponse.json({ msg: "server side error" }, { status: 500 });
   }
 };
+////////////////////////////////////////////////////////////////////
+/////////////// delete api

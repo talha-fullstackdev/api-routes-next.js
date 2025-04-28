@@ -2,6 +2,8 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { LiaEdit } from "react-icons/lia";
+import Delete from '../components/Delete';
+import { ToastContainer } from 'react-toastify';
 const Page = () => {
   const [data, setData] = useState([])
   useEffect(() => {
@@ -16,6 +18,8 @@ const Page = () => {
     }
     getData()
   }, [])
+
+
   return (
     <>
     <div className="p-4">
@@ -31,7 +35,7 @@ const Page = () => {
                 <th className="py-2 px-4 border-b">Gender</th>
                 <th className="py-2 px-4 border-b">Department</th>
                 <th className="py-2 px-4 border-b">Position</th>
-                <th className="py-2 px-4 border-b">Edit</th>
+                <th colSpan={2} className="py-2 px-4 border-b">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -42,8 +46,21 @@ const Page = () => {
                   <td className="py-2 px-4 border-b">{emp.gender }</td>
                   <td className="py-2 px-4 border-b">{emp.department}</td>
                   <td className="py-2 px-4 border-b">{emp.position}</td>
-                  <td title="edit?" className="py-2 px-4 border-b hover:text-xl"><Link href={`/getemp/${emp._id}`}><LiaEdit /></Link></td>
-                </tr>
+                  <td title="edit?" className="py-2 px-4 border-b hover:text-xl hover:text-green-600"><Link href={`/getemp/${emp._id}`}><LiaEdit /></Link></td>
+                  <td title="delete?" className="py-2 px-4 border-b hover:text-xl hover:text-red-600"><Link href=""><Delete id={emp._id}/></Link>     
+                  <ToastContainer
+                    position="top-center" // ✅ Centered on top
+                    autoClose={2270}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="dark"
+                    />
+            </td></tr>                
               ))}
             </tbody>
           </table>
