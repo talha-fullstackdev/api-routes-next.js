@@ -2,7 +2,6 @@
 import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { LiaEdit } from "react-icons/lia";
-
 const Page = () => {
   const [data, setData] = useState([])
   useEffect(() => {
@@ -10,7 +9,7 @@ const Page = () => {
       try {
         let  result = await fetch("http://localhost:3000/api/db-emp")
         result = await result.json()
-        setData(result.success)
+        setData(result.success.reverse()) // reverse the array so new employee came first
       } catch (error) {
         console.error("Error fetching data:", error)
       }

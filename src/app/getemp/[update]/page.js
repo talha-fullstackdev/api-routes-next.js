@@ -2,14 +2,16 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { use } from "react"; 
+import { use } from "react";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 const Page = ({ params }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [department, setDepartment] = useState("");
   const [position, setPosition] = useState("");
-  const router = useRouter(); 
+  const router = useRouter();
 
   const { update: id } = use(params); // ✅ unwrap the promise
 
@@ -40,8 +42,8 @@ const Page = ({ params }) => {
         department,
         position,
       };
-      if(!name ||!email|| !gender || !department ||!position){
-        return alert("dont leave any filed empty")
+      if (!name || !email || !gender || !department || !position) {
+        return alert("dont leave any filed empty");
       }
       let res = await fetch(`http://localhost:3000/api/db-emp/${id}`, {
         method: "PUT",
@@ -51,8 +53,10 @@ const Page = ({ params }) => {
       res = await res.json();
 
       if (res.success) {
-        alert("Employee updated successfully!");
-        router.push("/getemp"); // ✅ redirect after success
+        toast.success("Employee updated successfully!");
+        setTimeout(() => {
+          router.push("/getemp");
+        }, 2000); // ✅ redirect after success
       } else {
         alert("Employee not updated. Please try again.");
       }
@@ -112,6 +116,18 @@ const Page = ({ params }) => {
       >
         See Employee Data
       </Link>
+      <ToastContainer
+        position="top-center" // ✅ Centered on top
+        autoClose={2270}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useRef } from "react";
-
+import { ToastContainer ,toast } from "react-toastify";
 const page = () => {
   const nameRef = useRef();
   const emailRef = useRef();
@@ -26,13 +26,13 @@ const page = () => {
     };
     const { name, email, gender, department, position } = empData;
     if (!name || !email || !gender || !department || !position) {
-      return alert("please fill all fields!");
+      return toast.error("please fill all fields!");
     }
     if(name.length < 5  ){
-      return alert("name should not less then 5 charcters")
+      return toast.error("name should not less then 5 charcters")
     }
     if(!email.includes("@")){
-      return alert("provide valid email")
+      return toast.error("provide valid email")
     }
     try {
       let data = await fetch("http://localhost:3000/api/db-emp", {
@@ -42,9 +42,9 @@ const page = () => {
       data = await data.json();
       //   console.log(data)
       if (data.success) {
-        alert("emloyee added succesfully");
+        toast.success("emloyee added succesfully");
       } else {
-        alert("employee not saved! try again");
+        toast.error("employee not saved! try again");
       }
     } catch (err) {
       console.log("server side error occured", err);
@@ -91,6 +91,18 @@ const page = () => {
         add
       </button>
       <Link className="bg-green-400 w-[160px] text-center m-auto p-1 rounded-md hover:bg-green-300 " href="/getemp">see employee data</Link>
+        <ToastContainer
+              position="top-center" // ✅ Centered on top
+              autoClose={2270}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+            />
     </div>
   );
 };
