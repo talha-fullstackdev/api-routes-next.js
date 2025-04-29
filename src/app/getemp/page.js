@@ -67,7 +67,7 @@ const Page = () => {
        
         </div>
       ) : (
-        <p>Loading...</p>
+        <p className='text-2xl font-semibold'>Loading...</p>
       )}
         
     </div>
