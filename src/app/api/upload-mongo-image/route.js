@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 
 export const POST = async (req,res) =>{
     try{
-        return NextResponse({msg:"hello talha from mongo db image upload",success:true},{status:200})
+        return NextResponse.json({msg:"hello talha from mongo db image upload",success:true},{status:200})
 
     }catch(err){
         console.error("error occur >>>> ",err)
