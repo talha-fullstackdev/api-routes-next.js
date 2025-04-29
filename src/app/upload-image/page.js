@@ -1,12 +1,14 @@
 "use client";
 import  { useState ,useRef} from "react";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 const ImageUploadRoute = () => {
   const [file, setFile] = useState();
   const fileInputRef = useRef(null); 
   const handleFileSubmit = async (e) => {
     e.preventDefault();
     if (!file) {
-      return alert("kindly add file");
+      return toast.error("kindly add file");
     }
     const data = new FormData();
     data.append("file", file);
@@ -17,17 +19,17 @@ const ImageUploadRoute = () => {
       });
       result = await result.json()
       if (result.success) {
-         alert("file uploaded succesfully");
+         toast.success("file uploaded succesfully");
          setFile(null); 
          if (fileInputRef.current) {
            fileInputRef.current.value = ""; // Clear input field (as we cannot empty file state like we do for other values like text)
          } 
       } else {
-        return alert("File not uploaded");
+        return toast.error("File not uploaded");
       }
     } catch (err) {
       console.error(err);
-      alert("file uploaded fail server side error");
+      toast.error("file uploaded fail server side error");
     }
   };
   return (
