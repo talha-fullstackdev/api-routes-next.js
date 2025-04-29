@@ -18,7 +18,7 @@ const ImageUploadRoute = () => {
       result = await result.json()
       if (result.success) {
          alert("file uploaded succesfully");
-         setFile(null); // Clear state
+         setFile(null); 
          if (fileInputRef.current) {
            fileInputRef.current.value = ""; // Clear input field (as we cannot empty file state like we do for other values like text)
          } 
