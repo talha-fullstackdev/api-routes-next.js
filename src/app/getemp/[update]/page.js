@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { use } from "react";
 import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
+import Toast from "@/app/components/Toast";
 const Page = ({ params }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -116,18 +116,7 @@ const Page = ({ params }) => {
       >
         See Employee Data
       </Link>
-      <ToastContainer
-        position="top-center" // ✅ Centered on top
-        autoClose={2270}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
+      <Toast/>
     </div>
   );
 };

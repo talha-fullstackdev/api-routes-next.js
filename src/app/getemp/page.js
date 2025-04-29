@@ -17,8 +17,6 @@ const Page = () => {
     }
     getData()
   }, [])
-
-
   return (
     <>
     <div className="p-4">

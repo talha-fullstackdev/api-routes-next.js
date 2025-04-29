@@ -1,7 +1,7 @@
 "use client";
 import  { useState ,useRef} from "react";
 import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
+import Toast from "../components/Toast";
 const ImageUploadRoute = () => {
   const [file, setFile] = useState();
   const fileInputRef = useRef(null); 
@@ -52,18 +52,7 @@ const ImageUploadRoute = () => {
           >
             Add
           </button>
-          <ToastContainer
-                    position="top-center" // ✅ Centered on top
-                    autoClose={2270}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="dark"
-                    />
+       <Toast/>
         </form>
       </div>
     </div>

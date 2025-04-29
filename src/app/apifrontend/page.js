@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import React, { useRef } from "react";
-import { ToastContainer ,toast } from "react-toastify";
+import { toast } from "react-toastify";
+import Toast from "../components/Toast";
 const page = () => {
   const nameRef = useRef();
   const emailRef = useRef();
@@ -91,18 +92,7 @@ const page = () => {
         add
       </button>
       <Link className="bg-green-400 w-[160px] text-center m-auto p-1 rounded-md hover:bg-green-300 " href="/getemp">see employee data</Link>
-        <ToastContainer
-              position="top-center" // ✅ Centered on top
-              autoClose={2270}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="dark"
-            />
+      <Toast/>
     </div>
   );
 };
