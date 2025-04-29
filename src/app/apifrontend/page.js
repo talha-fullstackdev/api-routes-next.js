@@ -43,7 +43,7 @@ const page = () => {
       data = await data.json();
       //   console.log(data)
       if (data.success) {
-        toast.success(`emloyee ${name.split(" ")[0]} added succesfully`); 
+        toast.success(`emloyee ${name.split(" ")[0]} added succesfully`); // here only give us first name
       } else {
         toast.error("employee not saved! try again");
       }
