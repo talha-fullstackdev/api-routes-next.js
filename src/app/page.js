@@ -25,7 +25,7 @@ const page = () => {
             See Employees
           </Link>
           <Link
-            href="/upload-image"
+            href="/upload-mongo-image-frontend"
             className="block w-64 text-center bg-indigo-500 text-white py-2 rounded-md shadow hover:bg-indigo-400 transition"
           >
             Upload Images
