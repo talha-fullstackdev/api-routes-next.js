@@ -7,7 +7,6 @@ const UploadMongoImage = () => {
   const [file, setFile] = useState("");
   const fileRef = useRef();
   const handleRemove = () => {
-    /// remove file from input field
     setFile("");
     if (fileRef.current) {
       fileRef.current.value = "";
@@ -15,7 +14,7 @@ const UploadMongoImage = () => {
   };
   const handleFileSubmit = async (e) => {
     e.preventDefault();
-    if (!file) return toast.error("Please select a file");
+    if (!file) return toast.error("Please select a file!");
     const data = new FormData();
     data.append("file", file);
     try {
@@ -29,10 +28,10 @@ const UploadMongoImage = () => {
         const { name } = file;
         return toast.success(`succesfully uploaded ${name}`);
       } else {
-        return toast.error("File uploading failed");
+        return toast.error("File uploading failed!");
       }
     } catch (err) {
-      console.error("Server side error", err);
+      console.error("Server side error!", err);
       toast.error("File uploading failed! Server side error");
     }
   };
