@@ -2,6 +2,7 @@
 import React, { useRef, useState } from "react";
 import Toast from "../components/Toast";
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 const UploadMongoImage = () => {
   const [file, setFile] = useState("");
@@ -37,7 +38,7 @@ const UploadMongoImage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
       <form
         onSubmit={handleFileSubmit}
         className="bg-white p-6 rounded-xl shadow-md w-full max-w-md space-y-4"
@@ -73,9 +74,18 @@ const UploadMongoImage = () => {
         >
           Upload
         </button>
+        
+     
 
         <Toast />
       </form>
+      <Link
+        href="/getmongo-images"
+          className="w-[200px] mt-4 py-2 px-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
+        >
+          See uploaded images
+        </Link>
+        
     </div>
   );
 };

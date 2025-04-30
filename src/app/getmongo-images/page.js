@@ -1,0 +1,67 @@
+
+"use client";
+import React, { useEffect, useState } from "react";
+
+const SeeMongoImages = () => {
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true); // 🔄 New state
+
+  useEffect(() => {
+    const getImagesData = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/get-mongo-image"
+        );
+        const result = await response.json();
+
+        if (result.success) {
+          setImages(result.imagesData);
+        } else {
+          console.log("API response says: error");
+        }
+      } catch (err) {
+        console.log(err, "server side error");
+      } finally {
+        setLoading(false); // ✅ Hide spinner when done
+      }
+    };
+    getImagesData();
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-gray-100 py-10 px-4">
+      <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
+        Uploaded Images
+      </h1>
+
+      {loading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="relative w-20 h-20">
+            <div className="absolute inset-0 rounded-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-700 animate-spin"></div>
+            <div className="absolute top-1/2 left-1/2 w-3 h-3 bg-blue-600 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
+          </div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {images.map((image) => (
+            <div
+              className="bg-white rounded-xl shadow-md p-4 flex flex-col items-center"
+              key={image._id}
+            >
+              <img
+                className="w-full h-48 object-cover rounded-md mb-4"
+                src={`data:${image.contentType};base64,${Buffer.from(
+                  image.data
+                ).toString("base64")}`}
+                alt={image.name}
+              />
+              <p className="text-gray-700 font-medium">{image.name}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default SeeMongoImages;
