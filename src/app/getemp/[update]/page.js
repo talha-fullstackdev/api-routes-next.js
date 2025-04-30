@@ -5,15 +5,15 @@ import { useRouter } from "next/navigation";
 import { use } from "react";
 import { toast } from "react-toastify";
 import Toast from "@/app/components/Toast";
-const Page = ({ params }) => {
+
+const UpdateEmployeePage = ({ params }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [department, setDepartment] = useState("");
   const [position, setPosition] = useState("");
   const router = useRouter();
-
-  const { update: id } = use(params); // ✅ unwrap the promise
+  const { update: id } = use(params); // Assuming dynamic route param
 
   useEffect(() => {
     const getEmpData = async () => {
@@ -35,90 +35,92 @@ const Page = ({ params }) => {
 
   const handleUpdateEmployee = async () => {
     try {
-      const updatedEmpData = {
-        name,
-        email,
-        gender,
-        department,
-        position,
-      };
+      const updatedEmpData = { name, email, gender, department, position };
       if (!name || !email || !gender || !department || !position) {
-        return alert("dont leave any filed empty");
+        return toast.error("Please fill all fields!");
       }
       let res = await fetch(`http://localhost:3000/api/db-emp/${id}`, {
         method: "PUT",
         body: JSON.stringify(updatedEmpData),
       });
-
       res = await res.json();
 
       if (res.success) {
         toast.success("Employee updated successfully!");
         setTimeout(() => {
           router.push("/getemp");
-        }, 2000); // ✅ redirect after success
+        }, 2000);
       } else {
-        alert("Employee not updated. Please try again.");
+        toast.error("Update failed. Try again.");
       }
     } catch (error) {
       console.error("Error updating employee:", error);
-      alert("Something went wrong!");
+      toast.error("Something went wrong!");
     }
   };
 
   return (
-    <div className="flex flex-col w-[400px] gap-6 m-auto mt-20">
-      <h1 className="text-2xl font-semibold text-center">Update Employee</h1>
-      <input
-        value={name}
-        type="text"
-        placeholder="Enter your name"
-        className="border-2 p-2"
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        value={email}
-        type="email"
-        placeholder="Enter your email"
-        className="border-2 p-2"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        value={gender}
-        type="text"
-        placeholder="Enter your gender"
-        className="border-2 p-2"
-        onChange={(e) => setGender(e.target.value)}
-      />
-      <input
-        value={department}
-        type="text"
-        placeholder="Enter your department"
-        className="border-2 p-2"
-        onChange={(e) => setDepartment(e.target.value)}
-      />
-      <input
-        value={position}
-        type="text"
-        placeholder="Enter your position"
-        className="border-2 p-2"
-        onChange={(e) => setPosition(e.target.value)}
-      />
-      <button
-        onClick={handleUpdateEmployee}
-        className="bg-green-400 w-[80px] m-auto p-1 rounded-md hover:bg-green-300"
-      >
-        Update
-      </button>
-      <Link
-        href="/getemp"
-        className="bg-green-400 w-[160px] text-center m-auto p-1 rounded-md hover:bg-green-300"
-      >
-        See Employee Data
-      </Link>
-      <Toast/>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+      <div className="w-full max-w-md bg-white rounded-2xl shadow-md p-8 space-y-6">
+        <h1 className="text-3xl font-bold text-center text-gray-800">
+          Update Employee
+        </h1>
+
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          type="text"
+          placeholder="Enter your name"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+          autoFocus
+        />
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          placeholder="Enter your email"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+        />
+        <input
+          value={gender}
+          onChange={(e) => setGender(e.target.value)}
+          type="text"
+          placeholder="Enter your gender"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+        />
+        <input
+          value={department}
+          onChange={(e) => setDepartment(e.target.value)}
+          type="text"
+          placeholder="Enter your department"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+        />
+        <input
+          value={position}
+          onChange={(e) => setPosition(e.target.value)}
+          type="text"
+          placeholder="Enter your position"
+          className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+        />
+
+        <button
+          onClick={handleUpdateEmployee}
+          className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition duration-200"
+        >
+          Update
+        </button>
+
+        <Link
+          href="/getemp"
+          className="block text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg transition duration-200"
+        >
+          See Employee Data
+        </Link>
+
+        <Toast />
+      </div>
     </div>
   );
 };
 
-export default Page;
+export default UpdateEmployeePage;

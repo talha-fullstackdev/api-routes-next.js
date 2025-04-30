@@ -1,12 +1,13 @@
-
 "use client";
-import React, { useEffect, useState } from "react";
-
+import { toast } from "react-toastify";
+import Toast from "../components/Toast";
+import React, { useEffect, useState ,useRef} from "react";
 const SeeMongoImages = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true); // 🔄 New state
-
+  const toastShownRef = useRef(false);
   useEffect(() => {
+
     const getImagesData = async () => {
       try {
         const response = await fetch(
@@ -16,13 +17,19 @@ const SeeMongoImages = () => {
 
         if (result.success) {
           setImages(result.imagesData);
+          if (!toastShownRef.current) {
+            toast.success("Data loaded successfully");
+            toastShownRef.current = true;
+          }
+          
+          
         } else {
-          console.log("API response says: error");
+          console.log("error occur while fetching data from API!");
         }
       } catch (err) {
-        console.log(err, "server side error");
+        console.log(err, "server side error!");
       } finally {
-        setLoading(false); // ✅ Hide spinner when done
+        setLoading(false);
       }
     };
     getImagesData();
@@ -60,6 +67,7 @@ const SeeMongoImages = () => {
           ))}
         </div>
       )}
+      <Toast/>
     </div>
   );
 };
