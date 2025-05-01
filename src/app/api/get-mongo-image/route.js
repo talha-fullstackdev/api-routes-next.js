@@ -6,9 +6,7 @@ export const GET = async(req,res)=>{
     try{
         await mongoose.connect(connectionString)
         let data = await Image.find().select("name data contentType")
-      
-
-        return NextResponse.json({msg:"api connected succesfully",success:true,imagesData:data})
+        return NextResponse.json({msg:"data loaded succesfully",success:true,imagesData:data})
 
     }catch(err){
         console.error(err,"server side error")
