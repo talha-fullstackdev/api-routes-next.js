@@ -1,15 +1,14 @@
-
-import Link from 'next/link'
-import React from 'react'
-import { ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
+import Link from "next/link";
+import React from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const page = () => {
   return (
     <>
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4">
         <h1 className="text-3xl font-bold mb-10 text-gray-800">Home Page</h1>
-        
+
         <div className="space-y-4">
           <Link
             href="/apifrontend"
@@ -36,8 +35,6 @@ const page = () => {
           >
             See Images
           </Link>
-
-       
         </div>
       </div>
 
@@ -54,7 +51,7 @@ const page = () => {
         theme="dark"
       />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;

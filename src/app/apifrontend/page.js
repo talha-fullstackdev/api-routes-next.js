@@ -29,11 +29,11 @@ const page = () => {
     if (!name || !email || !gender || !department || !position) {
       return toast.error("please fill all fields!");
     }
-    if(name.length < 5  ){
-      return toast.error("name should not less then 5 charcters")
+    if (name.length < 5) {
+      return toast.error("name should not less then 5 charcters");
     }
-    if(!email.includes("@")){
-      return toast.error("provide valid email")
+    if (!email.includes("@")) {
+      return toast.error("provide valid email");
     }
     try {
       let data = await fetch("/api/db-emp", {
@@ -91,8 +91,13 @@ const page = () => {
       >
         add
       </button>
-      <Link className="bg-green-400 w-[160px] text-center m-auto p-1 rounded-md hover:bg-green-300 " href="/getemp">see employee data</Link>
-      <Toast/>
+      <Link
+        className="bg-green-400 w-[160px] text-center m-auto p-1 rounded-md hover:bg-green-300 "
+        href="/getemp"
+      >
+        see employee data
+      </Link>
+      <Toast />
     </div>
   );
 };
