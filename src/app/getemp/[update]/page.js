@@ -18,7 +18,7 @@ const UpdateEmployeePage = ({ params }) => {
   useEffect(() => {
     const getEmpData = async () => {
       try {
-        let res = await fetch(`http://localhost:3000/api/db-emp/${id}`);
+        let res = await fetch(`/api/db-emp/${id}`);
         res = await res.json();
         const { name, email, gender, department, position } = res.msg;
         setName(name);
@@ -39,7 +39,7 @@ const UpdateEmployeePage = ({ params }) => {
       if (!name || !email || !gender || !department || !position) {
         return toast.error("Please fill all fields!");
       }
-      let res = await fetch(`http://localhost:3000/api/db-emp/${id}`, {
+      let res = await fetch(`/api/db-emp/${id}`, {
         method: "PUT",
         body: JSON.stringify(updatedEmpData),
       });

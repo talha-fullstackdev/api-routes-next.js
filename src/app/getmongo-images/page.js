@@ -10,7 +10,7 @@ const SeeMongoImages = () => {
     const getImagesData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3000/api/get-mongo-image"
+          "/api/get-mongo-image"
         );
         const result = await response.json();
 

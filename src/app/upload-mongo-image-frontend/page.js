@@ -19,7 +19,7 @@ const UploadMongoImage = () => {
     const data = new FormData();
     data.append("file", file);
     try {
-      let result = await fetch("http://localhost:3000/api/upload-mongo-image", {
+      let result = await fetch("/api/upload-mongo-image", {
         method: "POST",
         body: data,
       });

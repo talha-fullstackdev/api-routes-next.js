@@ -11,7 +11,7 @@ const Page = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        let result = await fetch("http://localhost:3000/api/db-emp")
+        let result = await fetch("/api/db-emp")
         result = await result.json()
         setData(result.success.reverse()) // newest first
       } catch (error) {

@@ -13,7 +13,7 @@ const ImageUploadRoute = () => {
     const data = new FormData();
     data.append("file", file);
     try {
-      let result = await fetch("http://localhost:3000/api/upload-files", {
+      let result = await fetch("/api/upload-files", {
         method: "POST",
         body: data,
       });

@@ -36,7 +36,7 @@ const page = () => {
       return toast.error("provide valid email")
     }
     try {
-      let data = await fetch("http://localhost:3000/api/db-emp", {
+      let data = await fetch("/api/db-emp", {
         method: "POST",
         body: JSON.stringify(empData),
       });
