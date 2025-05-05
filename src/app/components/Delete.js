@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { toast } from "react-toastify";
-const Delete = ({ id , name}) => {
+const Delete = ({ id, name }) => {
   const handleDelete = async () => {
     let deleteEmp = await fetch(`http://localhost:3000/api/db-emp/${id}`, {
       method: "DELETE",
