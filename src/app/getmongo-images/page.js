@@ -1,13 +1,12 @@
 "use client";
 import { toast } from "react-toastify";
 import Toast from "../components/Toast";
-import React, { useEffect, useState ,useRef} from "react";
+import React, { useEffect, useState, useRef } from "react";
 const SeeMongoImages = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true); // 🔄 New state
   const toastShownRef = useRef(false);
   useEffect(() => {
-
     const getImagesData = async () => {
       try {
         const response = await fetch(
@@ -21,8 +20,6 @@ const SeeMongoImages = () => {
             toast.success("Data loaded successfully");
             toastShownRef.current = true;
           }
-          
-          
         } else {
           console.log("error occur while fetching data from API!");
         }
@@ -67,7 +64,7 @@ const SeeMongoImages = () => {
           ))}
         </div>
       )}
-      <Toast/>
+      <Toast />
     </div>
   );
 };
