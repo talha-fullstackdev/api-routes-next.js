@@ -40,7 +40,7 @@ const ImageUploadRoute = () => {
         </h1>
         <form onSubmit={handleFileSubmit} className="flex flex-col gap-4">
           <input
-          ref={fileInputRef}
+            ref={fileInputRef}
             onChange={(e) => setFile(e.target.files?.[0])}
             type="file"
             name="file"
