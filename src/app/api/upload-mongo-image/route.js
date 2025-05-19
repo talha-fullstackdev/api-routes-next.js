@@ -26,7 +26,7 @@ export const POST = async (req, res) => {
       { status: 200 }
     );
   } catch (err) {
-    console.error("server side error occur", err);
+    console.error("server side error occur",err);
     return NextResponse.json(
       { msg: "server side error!", success: false },
       { status: 500 }
