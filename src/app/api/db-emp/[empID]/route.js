@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export const DELETE = async (req, { params }) => {// here we have to pass req parameter if it is in used or not
   try {
     await mongoose.connect(connectionString);
-    const { empID } = params;
+    const { empID } = await params;
     const deletemp = await Employee.findByIdAndDelete(empID);
     if (!deletemp) {
       return NextResponse.json(
@@ -15,7 +15,7 @@ export const DELETE = async (req, { params }) => {// here we have to pass req pa
       );
     }
     return NextResponse.json(
-      { msg: "Employee deleted successfully" ,success:true },
+      { msg: "Employee deleted successfully", success: true },
       { status: 200 }
     );
   } catch (err) {
@@ -47,7 +47,7 @@ export const PUT = async (req, { params }) => {
       );
     }
     return NextResponse.json(
-      { msg: "updated succesfully", updatedEmp, success:true },
+      { msg: "updated succesfully", updatedEmp, success: true },
       { status: 200 }
     );
   } catch (err) {
@@ -62,11 +62,14 @@ export const GET = async (req, { params }) => {
   try {
     await mongoose.connect(connectionString);
     const { empID } = params;
-    let result = await Employee.findById(empID)
-    if(!result){
-      return NextResponse.json({msg:"employee not found with this is"},{status:404})
+    let result = await Employee.findById(empID);
+    if (!result) {
+      return NextResponse.json(
+        { msg: "employee not found with this is" },
+        { status: 404 }
+      );
     }
-    return NextResponse.json({msg:result})
+    return NextResponse.json({ msg: result });
   } catch (err) {
     console.error("server side errro", err);
     return NextResponse.json({ msg: "server side error" }, { status: 500 });
