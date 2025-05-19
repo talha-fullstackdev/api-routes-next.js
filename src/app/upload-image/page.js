@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import Toast from "../components/Toast";
 const ImageUploadRoute = () => {
   const [file, setFile] = useState();
-  const fileInputRef = useRef(null); 
+  const fileInputRef = useRef(null); // using ref for clearing input fileds after file has been upload
   const handleFileSubmit = async (e) => {
     e.preventDefault();
     if (!file) {
@@ -28,7 +28,7 @@ const ImageUploadRoute = () => {
         return toast.error("File not uploaded");
       }
     } catch (err) {
-      console.error(err);
+      console.error("server side error occured!",err);
       toast.error("file uploaded fail server side error");
     }
   };
