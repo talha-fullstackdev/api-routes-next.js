@@ -1,7 +1,6 @@
 "use client"
 import Link from "next/link";
 import React from "react";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useTitle from "./hooks/UseTitle";
 const page = () => {
@@ -39,19 +38,6 @@ const page = () => {
           </Link>
         </div>
       </div>
-
-      <ToastContainer
-        position="top-right"
-        autoClose={2270}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
     </>
   );
 };
