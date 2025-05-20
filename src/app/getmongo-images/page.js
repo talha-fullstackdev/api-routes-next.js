@@ -2,6 +2,7 @@
 import { toast } from "react-toastify";
 import Toast from "../components/Toast";
 import React, { useEffect, useState, useRef } from "react";
+import Loading from "../components/Loading";
 const SeeMongoImages = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true); // 🔄 New state
@@ -39,12 +40,7 @@ const SeeMongoImages = () => {
       </h1>
 
       {loading ? (
-        <div className="flex justify-center items-center h-64">
-          <div className="relative w-20 h-20">
-            <div className="absolute inset-0 rounded-full border-4 border-t-transparent border-b-transparent border-l-blue-500 border-r-blue-700 animate-spin"></div>
-            <div className="absolute top-1/2 left-1/2 w-3 h-3 bg-blue-600 rounded-full transform -translate-x-1/2 -translate-y-1/2"></div>
-          </div>
-        </div>
+        <Loading/>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {images.map((image) => (
