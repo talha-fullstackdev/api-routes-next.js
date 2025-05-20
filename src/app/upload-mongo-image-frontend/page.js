@@ -3,8 +3,9 @@ import React, { useRef, useState } from "react";
 import Toast from "../components/Toast";
 import { toast } from "react-toastify";
 import Link from "next/link";
-
+import useTitle from "../hooks/UseTitle";
 const UploadMongoImage = () => {
+   useTitle("upload images")
   const [file, setFile] = useState("");
   const fileRef = useRef(); // using file ref for clearing input filed after uploading
   const handleRemove = () => {

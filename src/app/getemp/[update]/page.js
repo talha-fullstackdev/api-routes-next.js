@@ -5,8 +5,10 @@ import { useRouter } from "next/navigation";
 import { use } from "react";
 import { toast } from "react-toastify";
 import Toast from "@/app/components/Toast";
+import UseTitle from "@/app/hooks/UseTitle";
 
 const UpdateEmployeePage = ({ params }) => {
+  UseTitle("update employee")
   const [originalData, setOriginalData] = useState({});
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

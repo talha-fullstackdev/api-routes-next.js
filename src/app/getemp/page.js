@@ -5,8 +5,9 @@ import React, { useState, useEffect } from 'react'
 import { LiaEdit } from "react-icons/lia"
 import Delete from '../components/Delete'
 import LoaderTwo from '../components/LoaderTwo'
-
+import UseTitle from '../hooks/UseTitle'
 const Page = () => {
+  UseTitle("employee data")
   const [data, setData] = useState([])
 
   useEffect(() => {

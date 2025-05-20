@@ -2,7 +2,9 @@
 import { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import Toast from "../components/Toast";
+import UseTitle from "../hooks/UseTitle";
 const ImageUploadRoute = () => {
+  UseTitle("upload image")
   const [file, setFile] = useState();
   const fileInputRef = useRef(null); // using ref for clearing input fileds after file has been upload
   const handleFileSubmit = async (e) => {

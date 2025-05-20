@@ -3,7 +3,9 @@ import { toast } from "react-toastify";
 import Toast from "../components/Toast";
 import React, { useEffect, useState, useRef } from "react";
 import Loading from "../components/Loading";
+import UseTitle from "../hooks/UseTitle";
 const SeeMongoImages = () => {
+  UseTitle("images page")
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true); // 🔄 New state
   const toastShownRef = useRef(false);
