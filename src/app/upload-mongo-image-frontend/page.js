@@ -7,7 +7,7 @@ import useTitle from "../hooks/UseTitle";
 const UploadMongoImage = () => {
   useTitle("upload images");
   const [file, setFile] = useState("");
-  const fileRef = useRef(); // using file ref for clearing input filed after uploading
+  const fileRef = useRef(); //clearing input filed after uploading
   const handleRemove = () => {
     setFile("");
     if (fileRef.current) {
