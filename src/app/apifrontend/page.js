@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Toast from "../components/Toast";
 import UseTitle from "../hooks/UseTitle";
 const page = () => {
-  UseTitle("add employees")
+  UseTitle("add employees");
   const nameRef = useRef();
   const emailRef = useRef();
   const genderRef = useRef();

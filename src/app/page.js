@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import Link from "next/link";
 import React from "react";
 import "react-toastify/dist/ReactToastify.css";
 import useTitle from "./hooks/UseTitle";
 const page = () => {
-  useTitle("home page")
+  useTitle("home page");
   return (
     <>
       <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4">

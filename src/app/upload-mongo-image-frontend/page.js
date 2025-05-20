@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import Link from "next/link";
 import useTitle from "../hooks/UseTitle";
 const UploadMongoImage = () => {
-   useTitle("upload images")
+  useTitle("upload images");
   const [file, setFile] = useState("");
   const fileRef = useRef(); // using file ref for clearing input filed after uploading
   const handleRemove = () => {
@@ -20,9 +20,10 @@ const UploadMongoImage = () => {
     const data = new FormData();
     data.append("file", file);
     try {
-        let result = await fetch("/api/upload-mongo-image", {
+      let result = await fetch("/api/upload-mongo-image", {
         method: "POST",
-        body: data,star
+        body: data,
+        star,
       });
       result = await result.json();
       if (result.success) {
