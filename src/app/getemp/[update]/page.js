@@ -44,7 +44,7 @@ const UpdateEmployeePage = ({ params }) => {
       );
       if (!isChanged) {
         return toast.error(
-          "Please update at least one field to update record."
+          "There is no change update atleast one field to update reord"
         );
       }
 
