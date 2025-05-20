@@ -4,6 +4,7 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { LiaEdit } from "react-icons/lia"
 import Delete from '../components/Delete'
+import LoaderTwo from '../components/LoaderTwo'
 
 const Page = () => {
   const [data, setData] = useState([])
@@ -61,7 +62,7 @@ const Page = () => {
             </table>
           </div>
         ) : (
-          <p className="text-center text-lg font-medium text-gray-600">Loading...</p>
+          <LoaderTwo/>
         )}
 
         <div className="mt-8 flex justify-center gap-6">
