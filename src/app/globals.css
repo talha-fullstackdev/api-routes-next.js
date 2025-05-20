@@ -204,7 +204,6 @@
 }
 /* ////////////////// loading component in image section */
 /* ////////////////////////////////////////// loader two css */
-
  .loader {
   position: absolute;
   top: calc(50% - 3.75em); /* 3 × 1.25em */
