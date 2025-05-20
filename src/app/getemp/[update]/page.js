@@ -7,11 +7,13 @@ import { toast } from "react-toastify";
 import Toast from "@/app/components/Toast";
 
 const UpdateEmployeePage = ({ params }) => {
+  const [originalData, setOriginalData] = useState({});
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [department, setDepartment] = useState("");
   const [position, setPosition] = useState("");
+
   const router = useRouter();
   const { update: id } = use(params); // Assuming dynamic route param
 
@@ -26,6 +28,7 @@ const UpdateEmployeePage = ({ params }) => {
         setGender(gender);
         setDepartment(department);
         setPosition(position);
+        setOriginalData({ name, email, gender, department, position });
       } catch (error) {
         console.error("Failed to fetch employee data:", error);
       }
@@ -36,6 +39,15 @@ const UpdateEmployeePage = ({ params }) => {
   const handleUpdateEmployee = async () => {
     try {
       const updatedEmpData = { name, email, gender, department, position };
+      const isChanged = Object.keys(updatedEmpData).some(
+        (key) => updatedEmpData[key] !== originalData[key]
+      );
+      if (!isChanged) {
+        return toast.error(
+          "Please update at least one field to update record."
+        );
+      }
+
       if (!name || !email || !gender || !department || !position) {
         return toast.error("Please fill all fields!");
       }
