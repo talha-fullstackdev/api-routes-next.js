@@ -74,18 +74,15 @@ const UploadMongoImage = () => {
         >
           Upload
         </button>
-        
-     
 
         <Toast />
       </form>
       <Link
         href="/getmongo-images"
-          className="w-[200px] mt-4 py-2 px-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
-        >
-          See uploaded images
-        </Link>
-        
+        className="w-[200px] mt-4 py-2 px-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
+      >
+        See uploaded images
+      </Link>
     </div>
   );
 };

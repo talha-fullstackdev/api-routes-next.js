@@ -22,7 +22,7 @@ export const POST = async (req, res) => {
   });
   const employee = await data.save();
   return NextResponse.json(
-    { msg: "employee save succesfully", newEmp: employee, success: true },
+    { msg: "Employee save succesfully", newEmp: employee, success: true },
     { status: 200 }
   );
 };
