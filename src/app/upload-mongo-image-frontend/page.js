@@ -21,7 +21,7 @@ const UploadMongoImage = () => {
     try {
         let result = await fetch("/api/upload-mongo-image", {
         method: "POST",
-        body: data,
+        body: data,star
       });
       result = await result.json();
       if (result.success) {
