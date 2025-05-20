@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const UploadMongoImage = () => {
   const [file, setFile] = useState("");
-  const fileRef = useRef();
+  const fileRef = useRef(); // using file ref for clearing input filed after uploading
   const handleRemove = () => {
     setFile("");
     if (fileRef.current) {
@@ -19,7 +19,7 @@ const UploadMongoImage = () => {
     const data = new FormData();
     data.append("file", file);
     try {
-      let result = await fetch("/api/upload-mongo-image", {
+        let result = await fetch("/api/upload-mongo-image", {
         method: "POST",
         body: data,
       });
